@@ -1,0 +1,15 @@
+# Ignore module build artefacts.
+labs/*/.*.cmd
+labs/*/*.dwo
+labs/*/*.ko
+labs/*/*.o
+labs/*/*.mod*
+labs/*/modules.order
+labs/*/Module.symvers
+
+# Ignore the cscope/ctags index files.
+cscope.*
+tags
+
+# Ignore the clang-format config file.
+.clang-format
