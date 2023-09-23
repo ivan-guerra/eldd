@@ -12,9 +12,9 @@ InstallModules()
 {
     ROOTFS_PART=$1
     pushd $ELDD_KERNEL_DIR > /dev/null
-        make ARCH=arm64 \
-             CROSS_COMPILE=aarch64-linux-gnu- \
-             INSTALL_MOD_PATH=$ROOTFS_PART modules_install
+    make ARCH=arm64 \
+        CROSS_COMPILE=aarch64-linux-gnu- \
+        INSTALL_MOD_PATH=$ROOTFS_PART modules_install
     popd > /dev/null
 }
 
@@ -23,10 +23,10 @@ InstallImageAndDtbs()
     BOOT_PART=$1
 
     pushd $ELDD_KERNEL_DIR > /dev/null
-        cp -v arch/arm64/boot/Image $BOOT_PART/kernel-rpi.img
-        cp -v arch/arm64/boot/dts/broadcom/*.dtb $BOOT_PART
-        cp -v arch/arm64/boot/dts/overlays/*.dtb* $BOOT_PART/overlays/
-        cp -v arch/arm64/boot/dts/overlays/README $BOOT_PART/overlays/
+    cp -v arch/arm64/boot/Image $BOOT_PART/kernel-rpi.img
+    cp -v arch/arm64/boot/dts/broadcom/*.dtb $BOOT_PART
+    cp -v arch/arm64/boot/dts/overlays/*.dtb* $BOOT_PART/overlays/
+    cp -v arch/arm64/boot/dts/overlays/README $BOOT_PART/overlays/
     popd > /dev/null
 }
 

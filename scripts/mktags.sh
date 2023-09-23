@@ -12,24 +12,24 @@ MakeCScopeFiles()
 
     # Create cscope.files for generic kernel sources and sources found under
     # arch/arm64.
-    find $ELDD_KERNEL_DIR                                       \
-         -path "$ELDD_KERNEL_DIR/arch*"            -prune -o    \
-         -path "$ELDD_KERNEL_DIR/tmp*"             -prune -o    \
-         -path "$ELDD_KERNEL_DIR/Documentation*"   -prune -o    \
-         -path "$ELDD_KERNEL_DIR/scripts*"         -prune -o    \
-         -path "$ELDD_KERNEL_DIR/tools*"           -prune -o    \
-         -path "$ELDD_KERNEL_DIR/include/config*"  -prune -o    \
-         -path "$ELDD_KERNEL_DIR/usr/include*"     -prune -o    \
-         -type f                                       \
-         -not -name '*.mod.c'                          \
-         -name "*.[chsS]" -print > cscope.files
-    find $ELDD_KERNEL_DIR/arch/arm64                              \
-         -path "$ELDD_KERNEL_DIR/arch/arm64/configs" -prune -o    \
-         -path "$ELDD_KERNEL_DIR/arch/arm64/kvm"     -prune -o    \
-         -path "$ELDD_KERNEL_DIR/arch/arm64/xen"     -prune -o    \
-         -type f                                       \
-         -not -name '*.mod.c'                          \
-         -name "*.[chsS]" -print >> cscope.files
+    find $ELDD_KERNEL_DIR                                      \
+        -path "$ELDD_KERNEL_DIR/arch*"            -prune -o    \
+        -path "$ELDD_KERNEL_DIR/tmp*"             -prune -o    \
+        -path "$ELDD_KERNEL_DIR/Documentation*"   -prune -o    \
+        -path "$ELDD_KERNEL_DIR/scripts*"         -prune -o    \
+        -path "$ELDD_KERNEL_DIR/tools*"           -prune -o    \
+        -path "$ELDD_KERNEL_DIR/include/config*"  -prune -o    \
+        -path "$ELDD_KERNEL_DIR/usr/include*"     -prune -o    \
+        -type f                                       \
+        -not -name '*.mod.c'                          \
+        -name "*.[chsS]" -print > cscope.files
+    find $ELDD_KERNEL_DIR/arch/arm64                             \
+        -path "$ELDD_KERNEL_DIR/arch/arm64/configs" -prune -o    \
+        -path "$ELDD_KERNEL_DIR/arch/arm64/kvm"     -prune -o    \
+        -path "$ELDD_KERNEL_DIR/arch/arm64/xen"     -prune -o    \
+        -type f                                       \
+        -not -name '*.mod.c'                          \
+        -name "*.[chsS]" -print >> cscope.files
 }
 
 MakeCScopeIndex()

@@ -14,6 +14,6 @@ RPI_SSH_KEY="$HOME/.ssh/rpi_rsa"
 MODULE_INSTALL_DIR="/home/rdev/"
 
 pushd $ELDD_LAB_DIR > /dev/null
-    find . -name *.ko \
-         -exec scp -i $RPI_SSH_KEY {} $RPI_USERNAME@$RPI_HOSTNAME:$MODULE_INSTALL_DIR \;
+find . -name *.ko \
+    -exec scp -i $RPI_SSH_KEY {} $RPI_USERNAME@$RPI_HOSTNAME:$MODULE_INSTALL_DIR \;
 popd > /dev/null

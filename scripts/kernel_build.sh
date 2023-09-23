@@ -10,24 +10,27 @@ source config.sh
 ConfigKernel()
 {
     pushd $ELDD_KERNEL_DIR > /dev/null
-        rm -f .config
-        make KERNEL=kernel8 \
-             ARCH=arm64 \
-             CROSS_COMPILE=aarch64-linux-gnu- \
-             bcm2711_defconfig && \
+    rm -f .config
+    make KERNEL=kernel8 \
+        ARCH=arm64 \
+        CC=clang \
+        CROSS_COMPILE=aarch64-linux-gnu- \
+        bcm2711_defconfig && \
         make ARCH=arm64 \
-             CROSS_COMPILE=aarch64-linux-gnu- \
-             nconfig
+        CC=clang \
+        CROSS_COMPILE=aarch64-linux-gnu- \
+        nconfig
     popd
 }
 
 BuildKernel()
 {
     pushd $ELDD_KERNEL_DIR > /dev/null
-        make ARCH=arm64 \
-             CROSS_COMPILE=aarch64-linux-gnu- \
-             -j$(nproc) \
-             Image modules dtbs
+    make ARCH=arm64 \
+        CC=clang \
+        CROSS_COMPILE=aarch64-linux-gnu- \
+        -j$(nproc) \
+        Image modules dtbs
     popd > /dev/null
 }
 
