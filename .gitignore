@@ -7,9 +7,9 @@ labs/*/*.mod*
 labs/*/modules.order
 labs/*/Module.symvers
 
-# Ignore the cscope/ctags index files.
-cscope.*
-tags
+# clangd cache and the compile commands database.
+.cache
+compile_commands.json
 
 # Ignore the clang-format config file.
 .clang-format
