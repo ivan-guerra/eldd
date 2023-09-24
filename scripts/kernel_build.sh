@@ -10,7 +10,6 @@ source config.sh
 ConfigKernel()
 {
     pushd $ELDD_KERNEL_DIR > /dev/null
-    rm -f .config
     make KERNEL=kernel8 \
         ARCH=arm64 \
         CC=clang \
