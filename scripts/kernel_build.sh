@@ -10,12 +10,15 @@ source config.sh
 ConfigKernel()
 {
     pushd $ELDD_KERNEL_DIR > /dev/null
-    make KERNEL=kernel8 \
-        ARCH=arm64 \
-        CC=clang \
-        CROSS_COMPILE=aarch64-linux-gnu- \
-        bcm2711_defconfig && \
-        make ARCH=arm64 \
+    if [[ ! -f ".config" ]]; then
+        make KERNEL=kernel8 \
+            ARCH=arm64 \
+            CC=clang \
+            CROSS_COMPILE=aarch64-linux-gnu- \
+            bcm2711_defconfig
+    fi
+
+    make ARCH=arm64 \
         CC=clang \
         CROSS_COMPILE=aarch64-linux-gnu- \
         nconfig
