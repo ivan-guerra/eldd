@@ -1,4 +1,4 @@
-SUBDIRS = lab_3_1
+SUBDIRS = lab_3_1 lab_3_2 lab_3_3
 
 all: subdirs
 
