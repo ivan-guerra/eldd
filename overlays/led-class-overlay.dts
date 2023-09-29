@@ -1,0 +1,45 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	  compatible = "brcm,bcm2837";
+
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            led_pins: led_pins {
+              brcm,pins = <27 22 26>;
+              brcm,function = <1>;
+              brcm,pull = <1 1 1>;
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&soc>;
+        __overlay__ {
+          #address-cells = <1>;
+          #size-cells = <1>;
+          ledclassRGB {
+            compatible = "arrow,RGBclassleds";
+            reg = <0x7e200000 0xb4>;
+            
+            pinctrl-names = "default";
+            pinctrl-0 = <&led_pins>;
+
+            red {
+              label = "red";
+            };
+
+            green {
+              label = "green";
+            };
+
+            blue {
+              label = "blue";
+              linux,default-trigger = "heartbeat";
+            };
+          };
+        };
+    };
+};
