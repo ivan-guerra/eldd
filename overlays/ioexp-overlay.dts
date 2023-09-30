@@ -1,0 +1,24 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	  compatible = "brcm,bcm2837";
+
+    fragment@0 {
+        target = <&i2c1>;
+        __overlay__ {
+          status = "okay";
+          #address-cells = <1>;
+          #size-cells = <0>;
+          ioexp@20 {
+            compatible = "arrow,ioexp";
+            reg = <0x20>;
+          };
+
+          ioexp@21 {
+            compatible = "arrow,ioexp";
+            reg = <0x21>;
+          };
+        };
+    };
+};
