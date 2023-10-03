@@ -1,0 +1,65 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	  compatible = "brcm,bcm2837";
+
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            key_pins: key_pins {
+              brcm,pins = <23 24>;
+              brcm,function = <0>;
+              brcm,pull = <1 1>;
+            };
+
+            led_pins: led_pins {
+              brcm,pins = <27 22 26>;
+              brcm,functions = <1>;
+              brcm,pull = <1 1 1>;
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&soc>;
+        __overlay__ {
+            ledpwm {
+              compatible = "arrow,ledpwm";
+
+              pinctrl-names = "default";
+              pinctrl-0 = <&key_pins &led_pins>;
+              
+              bp1 {
+                label = "KEY_1";
+                gpios = <&gpio 23 1>;
+                trigger = "falling";
+              };
+
+              bp2 {
+                label = "KEY_2";
+                gpios = <&gpio 24 1>;
+                trigger = "falling";
+              };
+
+              ledred {
+                label = "led";
+                colour = "red";
+                gpios = <&gpio 27 1>;
+              };
+
+              ledgreen {
+                label = "led";
+                colour = "green";
+                gpios = <&gpio 22 1>;
+              };
+
+              ledblue {
+                label = "led";
+                colour = "blue";
+                gpios = <&gpio 26 1>;
+              };
+            };
+        };
+    };
+};
